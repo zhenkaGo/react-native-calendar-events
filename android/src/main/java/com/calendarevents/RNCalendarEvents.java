@@ -546,7 +546,7 @@ public class RNCalendarEvents extends ReactContextBaseJavaModule implements Perm
 
             if (recurrenceRule.hasKey("frequency")) {
                 String frequency = recurrenceRule.getString("frequency");
-                String duration = "PT1H";
+//                String duration = "PT1H";
                 Integer interval = null;
                 Integer occurrence = null;
                 String endDate = null;
@@ -558,9 +558,9 @@ public class RNCalendarEvents extends ReactContextBaseJavaModule implements Perm
                     interval = recurrenceRule.getInt("interval");
                 }
 
-                if (recurrenceRule.hasKey("duration")) {
-                    duration = recurrenceRule.getString("duration");
-                }
+//                if (recurrenceRule.hasKey("duration")) {
+//                    duration = recurrenceRule.getString("duration");
+//                }
 
                 if (recurrenceRule.hasKey("occurrence")) {
                     occurrence = recurrenceRule.getInt("occurrence");
@@ -592,9 +592,9 @@ public class RNCalendarEvents extends ReactContextBaseJavaModule implements Perm
                 }
 
                 String rule = createRecurrenceRule(frequency, interval, endDate, occurrence, daysOfWeek, weekStart, weekPositionInMonth);
-                if (duration != null) {
-                    eventValues.put(CalendarContract.Events.DURATION, duration);
-                }
+//                if (duration != null) {
+//                    eventValues.put(CalendarContract.Events.DURATION, duration);
+//                }
                 if (rule != null) {
                     eventValues.put(CalendarContract.Events.RRULE, rule);
                 }
