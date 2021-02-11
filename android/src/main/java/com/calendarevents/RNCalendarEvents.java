@@ -534,6 +534,14 @@ public class RNCalendarEvents extends ReactContextBaseJavaModule implements Perm
             }
         }
 
+       if (details.hasKey("duration")) {
+          String duration = "PT1H";
+           duration = details.getString("duration");
+            if (duration != null) {
+              eventValues.put(CalendarContract.Events.DURATION, duration);
+          }
+       }
+
         if (details.hasKey("recurrence")) {
             String rule = createRecurrenceRule(details.getString("recurrence"), null, null, null, null, null, null);
             if (rule != null) {
@@ -628,7 +636,6 @@ public class RNCalendarEvents extends ReactContextBaseJavaModule implements Perm
         if (details.hasKey("id")) {
             int eventID = Integer.parseInt(details.getString("id"));
             WritableMap eventInstance = findEventById(details.getString("id"));
-
             if (eventInstance != null) {
                 ReadableMap eventCalendar = eventInstance.getMap("calendar");
 
